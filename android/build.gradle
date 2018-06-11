@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
 
+def DEFAULT_SUPPORT_LIBRARY_VERSION = "23.4.0"
+
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -19,8 +21,10 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation "com.facebook.react:react-native:+"  // From node_modules
+    def supportLibraryVersion = rootProject.hasProperty('supportLibraryVersion')  ? rootProject.supportLibraryVersion : DEFAULT_SUPPORT_LIBRARY_VERSION
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
+    compile "com.facebook.react:react-native:+"  // From node_modules
 }
