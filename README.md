@@ -1,7 +1,7 @@
 # react-native-splash-screen
 
 
-[![Download](https://img.shields.io/badge/Download-v3.0.7-ff69b4.svg) ](https://www.npmjs.com/package/react-native-splash-screen)
+[![Download](https://img.shields.io/badge/Download-v3.0.9-ff69b4.svg) ](https://www.npmjs.com/package/react-native-splash-screen)
 [ ![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/crazycodeboy/react-native-splash-screen/pulls)
 [ ![react-native-splash-screen release](https://img.shields.io/github/release/crazycodeboy/react-native-splash-screen.svg?maxAge=2592000?style=flat-square)](https://github.com/crazycodeboy/GitHubPopular/releases)
 [ ![语言 中文](https://img.shields.io/badge/语言-中文-feb252.svg)](https://github.com/crazycodeboy/react-native-splash-screen/blob/master/README.zh.md)
@@ -16,6 +16,7 @@ A splash screen API for react-native which can programatically hide and show the
 - [Examples](#examples)
 - [Getting started](#getting-started)
 - [API](#api)
+- [Testing](#testing)
 - [Contribution](#contribution)
 - [Changes](#changes)
 
@@ -222,7 +223,7 @@ Create `android/app/src/main/res/values/colors.xml` and add
 </resources>
 ```
 
-Create a style definition for this in `android/app/src/main/res/values/colors.xml`:
+Create a style definition for this in `android/app/src/main/res/values/styles.xml`:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -267,6 +268,20 @@ Method            | Type     | Optional | Description
 ----------------- | -------- | -------- | -----------
 show()   | function | false | Open splash screen (Native Method )
 hide() |  function  | false  |  Close splash screen     
+
+## Testing
+
+### Jest
+
+For Jest to work you will need to mock this component. Here is an example:
+
+```
+// __mocks__/react-native-splash-screen.js
+export default {
+  show: jest.fn().mockImplementation( () => { console.log('show splash screen'); } ),
+  hide: jest.fn().mockImplementation( () => { console.log('hide splash screen'); } ),
+}
+```
 
 ## Contribution
 
